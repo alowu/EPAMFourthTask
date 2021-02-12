@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/gems"
+        xmlns:tns="http://www.example.com/gems"
+        elementFormDefault="qualified">
+
+    <element name="gems">
+        <complexType>
+            <sequence>
+                <element ref="tns:gem" minOccurs="2" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Gems">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="visual" type="tns:GemsVisualParameters"/>
+            <element name="value" type="positiveInteger"/>
+            <element name="origin" type="string"/>
+        </sequence>
+        <attribute name="id" use="required">
+            <simpleType>
+                <restriction base="ID">
+                    <pattern value="[sp]\d{1,2}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="amount" use="optional" default="0">
+            <simpleType>
+                <restriction base="positiveInteger">
+                    <pattern value="\d{1,3}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+
+    <complexType name="Precious">
+        <complexContent>
+            <extension base="tns:Gems">
+                <sequence>
+                    <element name="preciousness" fixed="precious"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="Semiprecious">
+        <complexContent>
+            <extension base="tns:Gems">
+                <sequence>
+                    <element name="preciousness" fixed="semiprecious"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="GemsVisualParameters">
+        <sequence>
+            <element name="color" type="tns:EColor"/>
+            <element name="transparency">
+                <simpleType>
+                    <restriction base="integer">
+                        <minInclusive value="0"/>
+                        <maxInclusive value="100"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="edges">
+                <simpleType>
+                    <restriction base="integer">
+                        <minInclusive value="4"/>
+                        <maxInclusive value="15"/>
+                    </restriction>
+                </simpleType>
+            </element>
+        </sequence>
+    </complexType>
+
+    <simpleType name="EColor">
+        <restriction base="string">
+            <enumeration value="red"/>
+            <enumeration value="green"/>
+            <enumeration value="blue"/>
+            <enumeration value="white"/>
+        </restriction>
+    </simpleType>
+
+    <element name="gem" type="tns:Gems" abstract="true"/>
+    <element name="precious" type="tns:Precious" substitutionGroup="tns:gem"/>
+    <element name="semiprecious" type="tns:Semiprecious" substitutionGroup="tns:gem"/>
+</schema>
