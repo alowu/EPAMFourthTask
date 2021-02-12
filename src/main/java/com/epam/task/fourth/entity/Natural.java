@@ -1,6 +1,6 @@
 package com.epam.task.fourth.entity;
 
-public class Natural extends Gems {
+public abstract class Natural extends Gems {
     private String origin;
 
     public Natural(int id, String name, GemsVisualParameters visualParameters,
