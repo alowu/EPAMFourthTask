@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.example.com/gems"
+      xsi:schemaLocation="http://www.example.com/gems gems.xsd">
+
+    <precious id="p01">
+        <name>diamond</name>
+        <visual>
+            <color>white</color>
+            <transparency>80</transparency>
+            <edges>10</edges>
+        </visual>
+        <value>150</value>
+        <origin>oregon</origin>
+        <preciousness>precious</preciousness>
+    </precious>
+    <precious id="p02" amount="5">
+        <name>ruby</name>
+        <visual>
+            <color>red</color>
+            <transparency>100</transparency>
+            <edges>15</edges>
+        </visual>
+        <value>100</value>
+        <origin>siberia</origin>
+        <preciousness>precious</preciousness>
+    </precious>
+    <semiprecious id="s01">
+        <name>apatite</name>
+        <visual>
+            <color>blue</color>
+            <transparency>70</transparency>
+            <edges>15</edges>
+        </visual>
+        <value>70</value>
+        <origin>germany</origin>
+        <preciousness>semiprecious</preciousness>
+    </semiprecious>
+    <semiprecious id="s02" amount="10">
+        <name>prehnite</name>
+        <visual>
+            <color>green</color>
+            <transparency>50</transparency>
+            <edges>7</edges>
+        </visual>
+        <value>200</value>
+        <origin>africa</origin>
+        <preciousness>semiprecious</preciousness>
+    </semiprecious>
+</gems>
+
