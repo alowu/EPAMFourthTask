@@ -2,12 +2,12 @@ package com.epam.task.fourth.entity;
 
 import java.util.Objects;
 
-public class Precious extends Gems {
+public class Precious extends Natural {
     private final EPreciousness type = EPreciousness.PRECIOUS;
 
     public Precious(int id, String name, GemsVisualParameters visualParameters,
-                    int value, String origin, int amount) {
-        super(id, name, visualParameters, value, origin, amount);
+                    int value, int amount, String origin) {
+        super(id, name, visualParameters, value, amount, origin);
     }
 
     public EPreciousness getType() {

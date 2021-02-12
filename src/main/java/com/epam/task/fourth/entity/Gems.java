@@ -5,15 +5,13 @@ public abstract class Gems {
     private String name;
     private GemsVisualParameters visualParameters;
     private int value;
-    private String origin;
     private int amount;
 
-    public Gems(int id, String name, GemsVisualParameters visualParameters, int value, String origin, int amount) {
-        Id = id;
+    public Gems(int id, String name, GemsVisualParameters visualParameters, int value, int amount) {
+        this.Id = id;
         this.name = name;
         this.visualParameters = visualParameters;
         this.value = value;
-        this.origin = origin;
         this.amount = amount;
     }
 
@@ -49,14 +47,6 @@ public abstract class Gems {
         this.value = value;
     }
 
-    public String getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
     @Override
     public String toString() {
         return "Gems{" +
@@ -64,7 +54,6 @@ public abstract class Gems {
                 ", name='" + name + '\'' +
                 ", visualParameters=" + visualParameters +
                 ", value=" + value +
-                ", origin='" + origin + '\'' +
                 ", amount=" + amount +
                 '}';
     }
