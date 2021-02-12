@@ -1,0 +1,40 @@
+package com.epam.task.fourth.entity;
+
+import java.util.Objects;
+
+public class Precious extends Gems {
+    private final EPreciousness type = EPreciousness.PRECIOUS;
+
+    public Precious(int id, String name, GemsVisualParameters visualParameters,
+                    int value, String origin, int amount) {
+        super(id, name, visualParameters, value, origin, amount);
+    }
+
+    public EPreciousness getType() {
+        return type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Precious precious = (Precious) o;
+        return getType() == precious.getType();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getType());
+    }
+
+    @Override
+    public String toString() {
+        return "Precious{" +
+                "type=" + type +
+                "} " + super.toString();
+    }
+}
