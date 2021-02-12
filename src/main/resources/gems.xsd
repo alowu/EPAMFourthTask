@@ -27,7 +27,7 @@
         </attribute>
         <attribute name="amount" use="optional" default="0">
             <simpleType>
-                <restriction base="positiveInteger">
+                <restriction base="int">
                     <pattern value="\d{1,3}"/>
                 </restriction>
             </simpleType>
