@@ -16,8 +16,7 @@ public class XmlValidator {
     private final Logger LOGGER = Logger.getLogger(XmlValidator.class);
 
     public boolean isValid(String fileName, String schemaName){
-        String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        SchemaFactory factory = SchemaFactory.newInstance(language);
+        SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         File schemaLocation = new File(schemaName);
         Schema schema = null;
 
@@ -31,12 +30,9 @@ public class XmlValidator {
 
             LOGGER.info(fileName + " is valid");
             valid = true;
-        } catch (SAXException e) {
+        } catch (SAXException | IOException e) {
             LOGGER.error("Validation " + fileName + " isn't valid cause " +
-                    e.getMessage());
-        } catch (IOException e) {
-            LOGGER.error("Validation " + fileName + " isn't valid cause " +
-                    e.getMessage());
+                    e.getMessage(), e);
         }
         return valid;
     }
