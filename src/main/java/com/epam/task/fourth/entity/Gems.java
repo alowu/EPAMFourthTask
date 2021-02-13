@@ -1,17 +1,29 @@
 package com.epam.task.fourth.entity;
 
 public abstract class Gems {
-    private final int Id;
+    private final String id;
     private String name;
-    private GemsVisualParameters visualParameters;
+    private Colors color;
     private int value;
     private int amount;
 
-    public Gems(int id, String name, GemsVisualParameters visualParameters, int value, int amount) {
-        this.Id = id;
+    public Gems(String id, String name, Colors color, int value, int amount) {
+        this.id = id;
         this.name = name;
-        this.visualParameters = visualParameters;
+        this.color = color;
         this.value = value;
+        this.amount = amount;
+    }
+
+    public Colors getColor() {
+        return color;
+    }
+
+    public void setColor(Colors color) {
+        this.color = color;
+    }
+
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
@@ -19,8 +31,8 @@ public abstract class Gems {
         return amount;
     }
 
-    public int getId() {
-        return Id;
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -29,14 +41,6 @@ public abstract class Gems {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public GemsVisualParameters getVisualParameters() {
-        return visualParameters;
-    }
-
-    public void setVisualParameters(GemsVisualParameters visualParameters) {
-        this.visualParameters = visualParameters;
     }
 
     public int getValue() {
@@ -50,9 +54,9 @@ public abstract class Gems {
     @Override
     public String toString() {
         return "Gems{" +
-                "Id=" + Id +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", visualParameters=" + visualParameters +
+                ", color=" + color +
                 ", value=" + value +
                 ", amount=" + amount +
                 '}';

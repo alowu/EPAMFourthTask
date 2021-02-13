@@ -1,21 +1,26 @@
 package com.epam.task.fourth.entity;
 
-public class Semiprecious extends Natural {
-    private final EPreciousness type = EPreciousness.SEMIPRECIOUS;
+public class Semiprecious extends Gems {
+    private int transparency;
 
-    public Semiprecious(int id, String name, GemsVisualParameters visualParameters,
-                        int value, int amount, String origin) {
-        super(id, name, visualParameters, value, amount, origin);
+    public Semiprecious(String id, String name, Colors color, int value,
+                        int amount, int transparency) {
+        super(id, name, color, value, amount);
+        this.transparency = transparency;
     }
 
-    public EPreciousness getType() {
-        return type;
+    public int getTransparency() {
+        return transparency;
+    }
+
+    public void setTransparency(int transparency) {
+        this.transparency = transparency;
     }
 
     @Override
     public String toString() {
         return "Semiprecious{" +
-                "type=" + type +
+                "transparency=" + transparency +
                 "} " + super.toString();
     }
 }

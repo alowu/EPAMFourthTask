@@ -2,16 +2,21 @@ package com.epam.task.fourth.entity;
 
 import java.util.Objects;
 
-public class Precious extends Natural {
-    private final EPreciousness type = EPreciousness.PRECIOUS;
+public class Precious extends Semiprecious {
+    private int edges;
 
-    public Precious(int id, String name, GemsVisualParameters visualParameters,
-                    int value, int amount, String origin) {
-        super(id, name, visualParameters, value, amount, origin);
+    public Precious(String id, String name, Colors color, int value,
+                    int amount, int transparency, int edges) {
+        super(id, name, color, value, amount, transparency);
+        this.edges = edges;
     }
 
-    public EPreciousness getType() {
-        return type;
+    public int getEdges() {
+        return edges;
+    }
+
+    public void setEdges(int edges) {
+        this.edges = edges;
     }
 
     @Override
@@ -23,18 +28,18 @@ public class Precious extends Natural {
             return false;
         }
         Precious precious = (Precious) o;
-        return getType() == precious.getType();
+        return getEdges() == precious.getEdges();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getType());
+        return Objects.hash(getEdges());
     }
 
     @Override
     public String toString() {
         return "Precious{" +
-                "type=" + type +
+                "edges=" + edges +
                 "} " + super.toString();
     }
 }

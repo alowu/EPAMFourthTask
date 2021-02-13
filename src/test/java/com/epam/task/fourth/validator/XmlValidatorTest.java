@@ -6,8 +6,8 @@ import org.junit.Test;
 public class XmlValidatorTest {
     private XmlValidator validator = new XmlValidator();
 
-    private final String XSD_FILE = "src/main/resources/gems.xsd";
-    private final String VALID_XML = "src/main/resources/gems.xml";
+    private final String XSD_FILE = "src/test/java/com/epam/task/fourth/data/gems.xsd";
+    private final String VALID_XML = "src/test/java/com/epam/task/fourth/data/gems.xml";
     private final String INVALID_XML = "/main/resources/g.xml";
 
     @Test
