@@ -5,10 +5,21 @@ import java.util.Objects;
 public class Precious extends Semiprecious {
     private int edges;
 
-    public Precious(String id, String name, Colors color, int value,
+    public Precious() {}
+
+    public Precious(String id, String name, String color, int value,
                     int amount, int transparency, int edges) {
         super(id, name, color, value, amount, transparency);
         this.edges = edges;
+    }
+
+    public Precious(Semiprecious currentGem) {
+        super(currentGem.getId(),
+                currentGem.getName(),
+                currentGem.getColor(),
+                currentGem.getValue(),
+                currentGem.getAmount(),
+                currentGem.getTransparency());
     }
 
     public int getEdges() {

@@ -1,13 +1,17 @@
 package com.epam.task.fourth.entity;
 
+import java.util.Objects;
+
 public abstract class Gems {
-    private final String id;
+    private String id;
     private String name;
-    private Colors color;
+    private String color;
     private int value;
     private int amount;
 
-    public Gems(String id, String name, Colors color, int value, int amount) {
+    public Gems(){}
+
+    public Gems(String id, String name, String color, int value, int amount) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -15,11 +19,11 @@ public abstract class Gems {
         this.amount = amount;
     }
 
-    public Colors getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Colors color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -33,6 +37,10 @@ public abstract class Gems {
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -49,6 +57,27 @@ public abstract class Gems {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Gems gems = (Gems) o;
+        return getValue() == gems.getValue()
+                && getAmount() == gems.getAmount()
+                && getId().equals(gems.getId())
+                && getName().equals(gems.getName())
+                && getColor().equals(gems.getColor());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getColor(), getValue(), getAmount());
     }
 
     @Override
