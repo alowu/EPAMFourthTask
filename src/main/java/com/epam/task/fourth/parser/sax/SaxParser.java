@@ -30,7 +30,7 @@ public class SaxParser extends AbstractParser {
             LOGGER.info(xmlFile + " parsed");
             return gems;
         } catch (SAXException | IOException e) {
-            LOGGER.error(xmlFile + " NOT parsed", e);
+            LOGGER.error("error while SAX parsing " + e.getMessage(), e);
             throw new XmlException(e.getMessage(), e);
         }
     }
