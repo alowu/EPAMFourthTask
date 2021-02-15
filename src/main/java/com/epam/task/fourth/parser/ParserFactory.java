@@ -1,5 +1,6 @@
 package com.epam.task.fourth.parser;
 
+import com.epam.task.fourth.parser.dom.DomParser;
 import com.epam.task.fourth.parser.sax.SaxParser;
 
 public class ParserFactory {
@@ -13,8 +14,8 @@ public class ParserFactory {
         switch (type) {
             case SAX:
                 return new SaxParser();
-            /*case DOM: todo implement dom parser
-                return new DomParser();*/
+            case DOM:
+                return new DomParser();
             default:
                 throw new EnumConstantNotPresentException(
                         type.getDeclaringClass(), type.name()
