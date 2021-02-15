@@ -2,7 +2,6 @@ package com.epam.task.fourth.parser.sax;
 
 import com.epam.task.fourth.entity.Gems;
 import com.epam.task.fourth.parser.AbstractParser;
-import com.epam.task.fourth.parser.sax.handler.GemsHandler;
 import com.epam.task.fourth.validator.XmlException;
 import org.apache.log4j.Logger;
 import org.xml.sax.SAXException;
