@@ -1,6 +1,6 @@
 package com.epam.task.fourth.parser.stax;
 
-import com.epam.task.fourth.entity.Gems;
+import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.entity.Precious;
 import com.epam.task.fourth.entity.Semiprecious;
 import com.epam.task.fourth.parser.AbstractParser;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class StaxParser extends AbstractParser {
     private final Logger LOGGER = Logger.getLogger(StaxParser.class);
-    private List<Gems> gems = new ArrayList<>();
+    private List<Gem> gems = new ArrayList<>();
     private XMLInputFactory inputFactory;
 
     private final String PRECIOUS = "precious";
@@ -34,7 +34,7 @@ public class StaxParser extends AbstractParser {
         inputFactory = XMLInputFactory.newInstance();
     }
 
-    public List<Gems> getGems() {
+    public List<Gem> getGems() {
         return gems;
     }
 
@@ -144,7 +144,7 @@ public class StaxParser extends AbstractParser {
     }
 
     @Override
-    public List<Gems> parseListGems(String xmlFile) throws XmlException {
+    public List<Gem> parseListGems(String xmlFile) throws XmlException {
         FileInputStream inputStream = null;
         XMLStreamReader reader;
         String name;

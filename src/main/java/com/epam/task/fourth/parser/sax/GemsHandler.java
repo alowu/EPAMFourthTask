@@ -1,6 +1,6 @@
 package com.epam.task.fourth.parser.sax;
 
-import com.epam.task.fourth.entity.Gems;
+import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.entity.Precious;
 import com.epam.task.fourth.entity.Semiprecious;
 import org.apache.log4j.Logger;
@@ -15,11 +15,11 @@ import java.util.List;
 public class GemsHandler extends DefaultHandler {
     private final Logger LOGGER = Logger.getLogger(GemsHandler.class);
 
-    private List<Gems> gems = new ArrayList<>();
-    private Gems currentGem = null;
+    private List<Gem> gems = new ArrayList<>();
+    private Gem currentGem = null;
     private String tag = null;
 
-    public List<Gems> getGems() {
+    public List<Gem> getGems() {
         return gems;
     }
 

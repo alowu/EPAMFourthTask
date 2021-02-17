@@ -1,11 +1,15 @@
 package com.epam.task.fourth.entity;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.util.Objects;
 
-public class Semiprecious extends Gems {
+
+public class Semiprecious extends Gem {
+
     private int transparency;
 
-    public Semiprecious(){}
+    public Semiprecious() {
+    }
 
 
     public Semiprecious(String id, String name, String color, int value,
@@ -14,7 +18,7 @@ public class Semiprecious extends Gems {
         this.transparency = transparency;
     }
 
-    public Semiprecious(Gems currentGem) {
+    public Semiprecious(Gem currentGem) {
         super(currentGem.getId(),
                 currentGem.getName(),
                 currentGem.getColor(),
@@ -22,6 +26,7 @@ public class Semiprecious extends Gems {
                 currentGem.getAmount());
     }
 
+    @XmlElement(name = "transparency")
     public int getTransparency() {
         return transparency;
     }
@@ -52,8 +57,7 @@ public class Semiprecious extends Gems {
 
     @Override
     public String toString() {
-        return "Semiprecious{" +
-                "transparency=" + transparency +
-                "} " + super.toString();
+        return super.toString() +
+                "transparency=" + transparency +'\n';
     }
 }

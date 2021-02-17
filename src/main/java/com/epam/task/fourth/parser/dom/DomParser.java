@@ -1,6 +1,6 @@
 package com.epam.task.fourth.parser.dom;
 
-import com.epam.task.fourth.entity.Gems;
+import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.entity.Precious;
 import com.epam.task.fourth.entity.Semiprecious;
 import com.epam.task.fourth.parser.AbstractParser;
@@ -22,7 +22,7 @@ import java.util.List;
 
 public class DomParser extends AbstractParser {
     private final Logger LOGGER = Logger.getLogger(SaxParser.class);
-    private List<Gems> gems;
+    private List<Gem> gems;
     private DocumentBuilder documentBuilder;
 
     public DomParser(){
@@ -77,7 +77,7 @@ public class DomParser extends AbstractParser {
     }
 
     @Override
-    public List<Gems> parseListGems(String xmlFile) throws XmlException {
+    public List<Gem> parseListGems(String xmlFile) throws XmlException {
         Document doc = null;
         try {
             doc = documentBuilder.parse(xmlFile);

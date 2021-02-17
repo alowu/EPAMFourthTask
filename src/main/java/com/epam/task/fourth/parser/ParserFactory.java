@@ -1,29 +1,25 @@
 package com.epam.task.fourth.parser;
 
 import com.epam.task.fourth.parser.dom.DomParser;
+import com.epam.task.fourth.parser.jaxb.JaxbParser;
 import com.epam.task.fourth.parser.sax.SaxParser;
 import com.epam.task.fourth.parser.stax.StaxParser;
 
 public class ParserFactory {
-    private enum ParserType {
-        SAX,
-        DOM,
-        STAX
-    }
 
-    public AbstractParser create(String nameParser){
-        ParserType type = ParserType.valueOf(nameParser.toUpperCase());
+    public AbstractParser create(String nameParser) throws ParserTypeException {
+        String type = nameParser.toUpperCase();
         switch (type) {
-            case SAX:
+            case "SAX":
                 return new SaxParser();
-            case DOM:
+            case "DOM":
                 return new DomParser();
-            case STAX:
+            case "STAX":
                 return new StaxParser();
+            case "JAXB":
+                return new JaxbParser();
             default:
-                throw new EnumConstantNotPresentException(
-                        type.getDeclaringClass(), type.name()
-                );
+                throw new ParserTypeException();
         }
     }
 }

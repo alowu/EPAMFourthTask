@@ -1,8 +1,11 @@
 package com.epam.task.fourth.entity;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.util.Objects;
 
+
 public class Precious extends Semiprecious {
+
     private int edges;
 
     public Precious() {}
@@ -22,6 +25,7 @@ public class Precious extends Semiprecious {
                 currentGem.getTransparency());
     }
 
+    @XmlElement(name="edges")
     public int getEdges() {
         return edges;
     }
@@ -49,8 +53,7 @@ public class Precious extends Semiprecious {
 
     @Override
     public String toString() {
-        return "Precious{" +
-                "edges=" + edges +
-                "} " + super.toString();
+        return super.toString() +
+               "edges=" + edges + '\n';
     }
 }

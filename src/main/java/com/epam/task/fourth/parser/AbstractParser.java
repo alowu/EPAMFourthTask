@@ -1,15 +1,15 @@
 package com.epam.task.fourth.parser;
 
-import com.epam.task.fourth.entity.Gems;
+import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.validator.XmlException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractParser {
-    protected List<Gems> gems;
+    protected List<Gem> gems;
 
-    public AbstractParser(List<Gems> gems) {
+    public AbstractParser(List<Gem> gems) {
         this.gems = gems;
     }
 
@@ -17,9 +17,9 @@ public abstract class AbstractParser {
         gems = new ArrayList<>();
     }
 
-    public List<Gems> getGems() {
+    public List<Gem> getGems() {
         return gems;
     }
 
-    abstract public List<Gems> parseListGems(String xmlFile) throws XmlException;
+    abstract public List<Gem> parseListGems(String xmlFile) throws XmlException;
 }

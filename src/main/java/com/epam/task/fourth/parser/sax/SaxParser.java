@@ -1,6 +1,6 @@
 package com.epam.task.fourth.parser.sax;
 
-import com.epam.task.fourth.entity.Gems;
+import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.parser.AbstractParser;
 import com.epam.task.fourth.validator.XmlException;
 import org.apache.log4j.Logger;
@@ -14,12 +14,12 @@ import java.util.List;
 public class SaxParser extends AbstractParser {
     private final Logger LOGGER = Logger.getLogger(SaxParser.class);
     private String fileName;
-    private List<Gems> gems;
+    private List<Gem> gems;
     private GemsHandler gemsHandler = new GemsHandler();
     private XMLReader reader;
 
     @Override
-    public List<Gems> parseListGems(String xmlFile) throws XmlException {
+    public List<Gem> parseListGems(String xmlFile) throws XmlException {
         try {
             reader = XMLReaderFactory.createXMLReader();
             reader.setContentHandler(gemsHandler);

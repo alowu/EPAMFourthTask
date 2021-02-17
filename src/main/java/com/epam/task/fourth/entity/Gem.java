@@ -1,17 +1,38 @@
 package com.epam.task.fourth.entity;
 
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public abstract class Gems {
+@XmlRootElement(name = "gems", namespace = "http://www.example.com/gems")
+@XmlSeeAlso({Precious.class, Semiprecious.class})
+public class Gem {
+
+    private List<Gem> gems = new ArrayList<>();
+
+    public List<Gem> getGems() {
+        return gems;
+    }
+
+    public void setGems(List<Gem> gems) {
+        this.gems = gems;
+    }
+
     private String id;
+
     private String name;
+
     private String color;
+
     private int value;
+
     private int amount;
 
-    public Gems(){}
+    public Gem() {
+    }
 
-    public Gems(String id, String name, String color, int value, int amount) {
+    public Gem(String id, String name, String color, int value, int amount) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -19,6 +40,7 @@ public abstract class Gems {
         this.amount = amount;
     }
 
+    @XmlElement(name = "color")
     public String getColor() {
         return color;
     }
@@ -31,10 +53,13 @@ public abstract class Gems {
         this.amount = amount;
     }
 
+    @XmlAttribute(name = "amount")
     public int getAmount() {
         return amount;
     }
 
+    @XmlAttribute(name = "id")
+    @XmlID
     public String getId() {
         return id;
     }
@@ -43,6 +68,7 @@ public abstract class Gems {
         this.id = id;
     }
 
+    @XmlElement(name = "name")
     public String getName() {
         return name;
     }
@@ -51,6 +77,7 @@ public abstract class Gems {
         this.name = name;
     }
 
+    @XmlElement(name = "value")
     public int getValue() {
         return value;
     }
@@ -58,6 +85,7 @@ public abstract class Gems {
     public void setValue(int value) {
         this.value = value;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -67,7 +95,7 @@ public abstract class Gems {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Gems gems = (Gems) o;
+        Gem gems = (Gem) o;
         return getValue() == gems.getValue()
                 && getAmount() == gems.getAmount()
                 && getId().equals(gems.getId())
@@ -82,12 +110,10 @@ public abstract class Gems {
 
     @Override
     public String toString() {
-        return "Gems{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", color=" + color +
-                ", value=" + value +
-                ", amount=" + amount +
-                '}';
+        return  '\n'+ "id=" + id + '\n'+
+                "name=" + name + '\n'+
+                "color=" + color + '\n'+
+                "value=" + value + '\n'+
+                "amount=" + amount + '\n';
     }
 }
