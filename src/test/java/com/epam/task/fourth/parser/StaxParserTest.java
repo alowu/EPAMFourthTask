@@ -1,13 +1,15 @@
-package com.epam.task.fourth.parser.dom;
+package com.epam.task.fourth.parser;
 
 import com.epam.task.fourth.parser.AbstractParser;
 import com.epam.task.fourth.parser.AbstractParserTest;
-import com.epam.task.fourth.parser.ParserFactory;
 import com.epam.task.fourth.validator.XmlException;
 
-public class DomParserTest extends AbstractParserTest {
-    private final ParserFactory parserFactory = new ParserFactory();
-    private final AbstractParser parser = parserFactory.create("dom");
+public class StaxParserTest extends AbstractParserTest {
+
+    private final AbstractParser parser = parserFactory.create("stax");
+
+    public StaxParserTest() throws ParserTypeException {
+    }
 
     @Override
     public void testParseShouldParseValidXmlFileInList() throws XmlException {

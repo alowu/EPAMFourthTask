@@ -1,6 +1,6 @@
 package com.epam.task.fourth.parser;
 
-import com.epam.task.fourth.entity.Gems;
+import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.entity.Precious;
 import com.epam.task.fourth.entity.Semiprecious;
 import com.epam.task.fourth.validator.XmlException;
@@ -12,10 +12,11 @@ import java.util.List;
 
 public abstract class AbstractParserTest {
     private AbstractParser parser;
+    protected final ParserFactory parserFactory = new ParserFactory();
     private final String VALID_FILE = "inputData/gems.xml";
     private final String INVALID_FILE = "inputData/g.xml";
 
-    private final List<Gems> EXPECTED = Arrays.asList(
+    private final List<Gem> EXPECTED = Arrays.asList(
             new Precious("p01", "diamond", "white", 150, 0, 80, 10),
             new Precious("p02", "ruby", "red", 100, 5, 100, 15),
             new Semiprecious("s01", "apatite", "blue", 70, 0, 70),
@@ -27,7 +28,7 @@ public abstract class AbstractParserTest {
 
     @Test
     public void testParseShouldParseValidXmlFileInList() throws XmlException {
-        List<Gems> result = parser.parseListGems(VALID_FILE);
+        List<Gem> result = parser.parseListGems(VALID_FILE);
 
         Assert.assertEquals(EXPECTED, result);
     }
