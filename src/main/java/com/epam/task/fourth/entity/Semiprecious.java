@@ -1,11 +1,14 @@
 package com.epam.task.fourth.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import java.util.Objects;
 
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Semiprecious extends Gem {
 
+    @XmlElement(name = "transparency")
     private int transparency;
 
     public Semiprecious() {
@@ -26,7 +29,6 @@ public class Semiprecious extends Gem {
                 currentGem.getAmount());
     }
 
-    @XmlElement(name = "transparency")
     public int getTransparency() {
         return transparency;
     }

@@ -1,11 +1,14 @@
 package com.epam.task.fourth.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import java.util.Objects;
 
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Precious extends Semiprecious {
 
+    @XmlElement(name="edges")
     private int edges;
 
     public Precious() {}
@@ -25,7 +28,6 @@ public class Precious extends Semiprecious {
                 currentGem.getTransparency());
     }
 
-    @XmlElement(name="edges")
     public int getEdges() {
         return edges;
     }

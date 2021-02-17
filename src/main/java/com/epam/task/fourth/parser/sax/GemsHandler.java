@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GemsHandler extends DefaultHandler {
-    private final Logger LOGGER = Logger.getLogger(GemsHandler.class);
+    private static final Logger LOGGER = Logger.getLogger(GemsHandler.class);
 
     private List<Gem> gems = new ArrayList<>();
     private Gem currentGem = null;

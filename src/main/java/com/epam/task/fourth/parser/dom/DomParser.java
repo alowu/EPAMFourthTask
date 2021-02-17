@@ -3,7 +3,8 @@ package com.epam.task.fourth.parser.dom;
 import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.entity.Precious;
 import com.epam.task.fourth.entity.Semiprecious;
-import com.epam.task.fourth.parser.AbstractParser;
+import com.epam.task.fourth.parser.ParsingException;
+import com.epam.task.fourth.parser.XmlParser;
 import com.epam.task.fourth.parser.sax.SaxParser;
 import com.epam.task.fourth.validator.XmlException;
 import org.apache.log4j.Logger;
@@ -20,8 +21,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DomParser extends AbstractParser {
-    private final Logger LOGGER = Logger.getLogger(SaxParser.class);
+public class DomParser implements XmlParser {
+    private static final Logger LOGGER = Logger.getLogger(DomParser.class);
     private List<Gem> gems;
     private DocumentBuilder documentBuilder;
 
@@ -77,7 +78,7 @@ public class DomParser extends AbstractParser {
     }
 
     @Override
-    public List<Gem> parseListGems(String xmlFile) throws XmlException {
+    public List<Gem> parse(String xmlFile) throws ParsingException {
         Document doc = null;
         try {
             doc = documentBuilder.parse(xmlFile);
@@ -98,7 +99,7 @@ public class DomParser extends AbstractParser {
             }
         } catch (SAXException | IOException e) {
             LOGGER.error("error while DOM parsing " + e.getMessage(), e);
-            throw new XmlException(e.getMessage(), e);
+            throw new ParsingException(e);
         }
         return gems;
     }

@@ -1,22 +1,11 @@
 package com.epam.task.fourth.parser;
 
-import com.epam.task.fourth.validator.XmlException;
+import com.epam.task.fourth.parser.jaxb.JaxbParser;
 
 public class JaxbParserTest extends AbstractParserTest {
-    private final AbstractParser parser = parserFactory.create("jaxb");
-
-    public JaxbParserTest() throws ParserTypeException {
-    }
 
     @Override
-    public void testParseShouldParseValidXmlFileInList() throws XmlException {
-        setParser(parser);
-        super.testParseShouldParseValidXmlFileInList();
-    }
-
-    @Override
-    public void testParseShouldThrowExceptionWhenXmlInvalid() throws XmlException {
-        setParser(parser);
-        super.testParseShouldThrowExceptionWhenXmlInvalid();
+    protected XmlParser getParser() {
+        return new JaxbParser();
     }
 }

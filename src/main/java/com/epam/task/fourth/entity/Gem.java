@@ -5,28 +5,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@XmlRootElement(name = "gems", namespace = "http://www.example.com/gems")
+@XmlRootElement(name = "gem", namespace = "http://www.example.com/gems")
 @XmlSeeAlso({Precious.class, Semiprecious.class})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Gem {
 
-    private List<Gem> gems = new ArrayList<>();
-
-    public List<Gem> getGems() {
-        return gems;
-    }
-
-    public void setGems(List<Gem> gems) {
-        this.gems = gems;
-    }
-
+    @XmlAttribute(name = "id")
     private String id;
 
+    @XmlElement(name = "name")
     private String name;
 
+    @XmlElement(name = "color")
     private String color;
 
+    @XmlElement(name = "value")
     private int value;
 
+    @XmlAttribute(name = "amount")
     private int amount;
 
     public Gem() {
@@ -40,7 +36,6 @@ public class Gem {
         this.amount = amount;
     }
 
-    @XmlElement(name = "color")
     public String getColor() {
         return color;
     }
@@ -53,13 +48,10 @@ public class Gem {
         this.amount = amount;
     }
 
-    @XmlAttribute(name = "amount")
     public int getAmount() {
         return amount;
     }
 
-    @XmlAttribute(name = "id")
-    @XmlID
     public String getId() {
         return id;
     }
@@ -68,7 +60,6 @@ public class Gem {
         this.id = id;
     }
 
-    @XmlElement(name = "name")
     public String getName() {
         return name;
     }
@@ -77,7 +68,6 @@ public class Gem {
         this.name = name;
     }
 
-    @XmlElement(name = "value")
     public int getValue() {
         return value;
     }

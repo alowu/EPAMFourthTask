@@ -3,8 +3,8 @@ package com.epam.task.fourth.parser.stax;
 import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.entity.Precious;
 import com.epam.task.fourth.entity.Semiprecious;
-import com.epam.task.fourth.parser.AbstractParser;
-import com.epam.task.fourth.validator.XmlException;
+import com.epam.task.fourth.parser.ParsingException;
+import com.epam.task.fourth.parser.XmlParser;
 import org.apache.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;
@@ -17,8 +17,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaxParser extends AbstractParser {
-    private final Logger LOGGER = Logger.getLogger(StaxParser.class);
+public class StaxParser implements XmlParser {
+    private static final Logger LOGGER = Logger.getLogger(StaxParser.class);
     private List<Gem> gems = new ArrayList<>();
     private XMLInputFactory inputFactory;
 
@@ -144,7 +144,7 @@ public class StaxParser extends AbstractParser {
     }
 
     @Override
-    public List<Gem> parseListGems(String xmlFile) throws XmlException {
+    public List<Gem> parse(String xmlFile) throws ParsingException {
         FileInputStream inputStream = null;
         XMLStreamReader reader;
         String name;
@@ -169,7 +169,7 @@ public class StaxParser extends AbstractParser {
             }
         } catch (FileNotFoundException | XMLStreamException e) {
             LOGGER.error("error while STAX parsing " + e.getMessage(), e);
-            throw new XmlException(e.getMessage(), e);
+            throw new ParsingException(e);
         } finally {
             try {
                 if (inputStream != null) {
