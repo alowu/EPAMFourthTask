@@ -29,7 +29,6 @@ public class SaxParser implements XmlParser {
             LOGGER.info(xmlFile + " parsed");
             return gems;
         } catch (SAXException | IOException e) {
-            LOGGER.error("error while SAX parsing " + e.getMessage(), e);
             throw new ParsingException(e);
         }
     }

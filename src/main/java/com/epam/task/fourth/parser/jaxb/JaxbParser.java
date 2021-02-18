@@ -19,14 +19,17 @@ public class JaxbParser implements XmlParser {
 
     @Override
     public List<Gem> parse(String xmlFile) throws ParsingException {
+        File file = new File(xmlFile);
+        if (!file.exists()) {
+            throw new ParsingException("File " + xmlFile + " not exists");
+        }
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Gems.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            Gems gems = (Gems) unmarshaller.unmarshal(new File(xmlFile));
+            Gems gems = (Gems) unmarshaller.unmarshal(file);
 
             return gems.getGems();
         } catch (JAXBException e) {
-            LOGGER.error("error while JAXB parsing " + e.getMessage(), e);
             throw new ParsingException(e);
         }
     }

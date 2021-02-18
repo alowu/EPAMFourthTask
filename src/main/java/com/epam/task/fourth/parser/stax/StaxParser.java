@@ -168,7 +168,6 @@ public class StaxParser implements XmlParser {
                 }
             }
         } catch (FileNotFoundException | XMLStreamException e) {
-            LOGGER.error("error while STAX parsing " + e.getMessage(), e);
             throw new ParsingException(e);
         } finally {
             try {

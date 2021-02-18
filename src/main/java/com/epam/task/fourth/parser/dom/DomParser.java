@@ -106,7 +106,6 @@ public class DomParser implements XmlParser {
                 gems.add(semiprecious);
             }
         } catch (SAXException | IOException e) {
-            LOGGER.error("error while DOM parsing " + e.getMessage(), e);
             throw new ParsingException(e);
         }
         return gems;
