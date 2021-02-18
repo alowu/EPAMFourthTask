@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class XmlValidatorTest {
-    private XmlValidator validator = new XmlValidator();
+    private final XmlValidator validator = new XmlValidator();
 
     private final String XSD_FILE = "inputData/gems.xsd";
     private final String VALID_XML = "inputData/gems.xml";

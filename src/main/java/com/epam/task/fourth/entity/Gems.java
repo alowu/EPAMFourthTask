@@ -4,15 +4,19 @@ import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
-@XmlRootElement(name="gems")
+@XmlRootElement(name="gems", namespace = "http://www.example.com/gems")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Gems {
     @XmlElements({
-            @XmlElement(name="gem", type=Gem.class),
-            @XmlElement(name="precious", type=Precious.class),
-            @XmlElement(name="semiprecious", type=Semiprecious.class)
+            @XmlElement(name="gem", type=Gem.class, namespace = "http://www.example.com/gems"),
+            @XmlElement(name="precious", type=Precious.class, namespace = "http://www.example.com/gems"),
+            @XmlElement(name="semiprecious", type=Semiprecious.class, namespace = "http://www.example.com/gems")
     })
     private ArrayList<Gem> gems = new ArrayList<>();
+
+    public Gems(){
+        super();
+    }
 
     public ArrayList<Gem> getGems() {
         return gems;
@@ -41,5 +45,12 @@ public class Gems {
     @Override
     public int hashCode() {
         return Objects.hash(getGems());
+    }
+
+    @Override
+    public String toString() {
+        return "Gems{" +
+                "gems=" + gems +
+                '}';
     }
 }

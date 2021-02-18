@@ -1,14 +1,19 @@
 package com.epam.task.fourth.entity;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import java.util.Objects;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({Precious.class})
+@XmlRootElement(name="semiprecious",namespace = "http://www.example.com/gems")
 public class Semiprecious extends Gem {
 
-    @XmlElement(name = "transparency")
+    @XmlElement(name = "transparency",required = true, namespace = "http://www.example.com/gems")
     private int transparency;
 
     public Semiprecious() {

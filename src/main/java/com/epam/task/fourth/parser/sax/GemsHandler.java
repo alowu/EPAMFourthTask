@@ -15,7 +15,7 @@ import java.util.List;
 public class GemsHandler extends DefaultHandler {
     private static final Logger LOGGER = Logger.getLogger(GemsHandler.class);
 
-    private List<Gem> gems = new ArrayList<>();
+    private final List<Gem> gems = new ArrayList<>();
     private Gem currentGem = null;
     private String tag = null;
 

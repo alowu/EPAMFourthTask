@@ -15,7 +15,7 @@ public class SaxParser implements XmlParser {
     private static final Logger LOGGER = Logger.getLogger(SaxParser.class);
     private String fileName;
     private List<Gem> gems;
-    private GemsHandler gemsHandler = new GemsHandler();
+    private final GemsHandler gemsHandler = new GemsHandler();
     private XMLReader reader;
 
     @Override

@@ -1,14 +1,17 @@
 package com.epam.task.fourth.entity;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import java.util.Objects;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name="precious",namespace = "http://www.example.com/gems")
 public class Precious extends Semiprecious {
 
-    @XmlElement(name="edges")
+    @XmlElement(name="edges",required = true, namespace = "http://www.example.com/gems")
     private int edges;
 
     public Precious() {}

@@ -23,8 +23,16 @@ import java.util.List;
 
 public class DomParser implements XmlParser {
     private static final Logger LOGGER = Logger.getLogger(DomParser.class);
-    private List<Gem> gems;
+    private final List<Gem> gems;
     private DocumentBuilder documentBuilder;
+
+    private final String PRECIOUS = "precious";
+    private final String SEMIPRECIOUS = "semiprecious";
+    private final String NAME = "name";
+    private final String COLOR = "color";
+    private final String VALUE = "value";
+    private final String TRANSPARENCY = "transparency";
+    private final String EDGES = "edges";
 
     public DomParser(){
         this.gems = new ArrayList<>();
@@ -53,16 +61,16 @@ public class DomParser implements XmlParser {
         }
         semiprecious.setAmount(Integer.parseInt(amount));
 
-        String name = getElementTextContent(gemElement, "name");
+        String name = getElementTextContent(gemElement, NAME);
         semiprecious.setName(name);
 
-        String color = getElementTextContent(gemElement, "color");
+        String color = getElementTextContent(gemElement, COLOR);
         semiprecious.setColor(color);
 
-        int value = Integer.parseInt(getElementTextContent(gemElement, "value"));
+        int value = Integer.parseInt(getElementTextContent(gemElement, VALUE));
         semiprecious.setValue(value);
 
-        int transparency = Integer.parseInt(getElementTextContent(gemElement, "transparency"));
+        int transparency = Integer.parseInt(getElementTextContent(gemElement, TRANSPARENCY));
         semiprecious.setTransparency(transparency);
 
         return semiprecious;
@@ -71,7 +79,7 @@ public class DomParser implements XmlParser {
     private Precious parsePrecious(Element gemElement) {
         Precious precious = new Precious(parseSemiprecious(gemElement));
 
-        int edges = Integer.parseInt(getElementTextContent(gemElement, "edges"));
+        int edges = Integer.parseInt(getElementTextContent(gemElement, EDGES));
         precious.setEdges(edges);
 
         return precious;
@@ -84,14 +92,14 @@ public class DomParser implements XmlParser {
             doc = documentBuilder.parse(xmlFile);
             Element root = doc.getDocumentElement();
 
-            NodeList preciousList = root.getElementsByTagName("precious");
+            NodeList preciousList = root.getElementsByTagName(PRECIOUS);
             for (int i = 0; i < preciousList.getLength(); ++i) {
                 Element preciousElement = (Element) preciousList.item(i);
                 Precious precious = parsePrecious(preciousElement);
                 gems.add(precious);
             }
 
-            NodeList semipreciousList = root.getElementsByTagName("semiprecious");
+            NodeList semipreciousList = root.getElementsByTagName(SEMIPRECIOUS);
             for (int i = 0; i < semipreciousList.getLength(); ++i) {
                 Element semipreciousElement = (Element) semipreciousList.item(i);
                 Semiprecious semiprecious = parseSemiprecious(semipreciousElement);

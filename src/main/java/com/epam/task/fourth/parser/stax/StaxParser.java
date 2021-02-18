@@ -19,8 +19,8 @@ import java.util.List;
 
 public class StaxParser implements XmlParser {
     private static final Logger LOGGER = Logger.getLogger(StaxParser.class);
-    private List<Gem> gems = new ArrayList<>();
-    private XMLInputFactory inputFactory;
+    private final List<Gem> gems = new ArrayList<>();
+    private final XMLInputFactory inputFactory;
 
     private final String PRECIOUS = "precious";
     private final String SEMIPRECIOUS = "semiprecious";

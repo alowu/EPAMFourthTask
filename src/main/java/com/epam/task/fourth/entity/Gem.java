@@ -1,32 +1,29 @@
 package com.epam.task.fourth.entity;
 
 import javax.xml.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @XmlRootElement(name = "gem", namespace = "http://www.example.com/gems")
-@XmlSeeAlso({Precious.class, Semiprecious.class})
+@XmlSeeAlso({Semiprecious.class})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Gem {
 
-    @XmlAttribute(name = "id")
+    @XmlAttribute(name = "id",required = true)
     private String id;
 
-    @XmlElement(name = "name")
+    @XmlElement(name = "name",required = true, namespace = "http://www.example.com/gems")
     private String name;
 
-    @XmlElement(name = "color")
+    @XmlElement(name = "color",required = true, namespace = "http://www.example.com/gems")
     private String color;
 
-    @XmlElement(name = "value")
+    @XmlElement(name = "value",required = true, namespace = "http://www.example.com/gems")
     private int value;
 
     @XmlAttribute(name = "amount")
     private int amount;
 
-    public Gem() {
-    }
+    public Gem() {}
 
     public Gem(String id, String name, String color, int value, int amount) {
         this.id = id;
@@ -106,4 +103,5 @@ public class Gem {
                 "value=" + value + '\n'+
                 "amount=" + amount + '\n';
     }
+
 }
