@@ -1,8 +1,6 @@
-package com.epam.task.fourth.parser.sax;
+package com.epam.task.fourth.parser;
 
 import com.epam.task.fourth.entity.Gem;
-import com.epam.task.fourth.parser.ParsingException;
-import com.epam.task.fourth.parser.XmlParser;
 import org.apache.log4j.Logger;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;

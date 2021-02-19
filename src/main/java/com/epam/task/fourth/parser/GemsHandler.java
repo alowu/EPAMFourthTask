@@ -1,4 +1,4 @@
-package com.epam.task.fourth.parser.sax;
+package com.epam.task.fourth.parser;
 
 import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.entity.Precious;

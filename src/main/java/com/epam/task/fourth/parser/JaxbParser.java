@@ -1,9 +1,7 @@
-package com.epam.task.fourth.parser.jaxb;
+package com.epam.task.fourth.parser;
 
 import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.entity.Gems;
-import com.epam.task.fourth.parser.ParsingException;
-import com.epam.task.fourth.parser.XmlParser;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

@@ -1,12 +1,8 @@
-package com.epam.task.fourth.parser.dom;
+package com.epam.task.fourth.parser;
 
 import com.epam.task.fourth.entity.Gem;
 import com.epam.task.fourth.entity.Precious;
 import com.epam.task.fourth.entity.Semiprecious;
-import com.epam.task.fourth.parser.ParsingException;
-import com.epam.task.fourth.parser.XmlParser;
-import com.epam.task.fourth.parser.sax.SaxParser;
-import com.epam.task.fourth.validator.XmlException;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
