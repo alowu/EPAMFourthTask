@@ -11,15 +11,13 @@ import java.util.List;
 
 public class SaxParser implements XmlParser {
     private static final Logger LOGGER = Logger.getLogger(SaxParser.class);
-    private String fileName;
-    private List<Gem> gems;
-    private final GemsHandler gemsHandler = new GemsHandler();
-    private XMLReader reader;
 
     @Override
     public List<Gem> parse(String xmlFile) throws ParsingException {
+        List<Gem> gems;
+        final GemsHandler gemsHandler = new GemsHandler();
         try {
-            reader = XMLReaderFactory.createXMLReader();
+            XMLReader reader = XMLReaderFactory.createXMLReader();
             reader.setContentHandler(gemsHandler);
             reader.parse(xmlFile);
             gems = gemsHandler.getGems();
@@ -30,13 +28,4 @@ public class SaxParser implements XmlParser {
             throw new ParsingException(e);
         }
     }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
 }
