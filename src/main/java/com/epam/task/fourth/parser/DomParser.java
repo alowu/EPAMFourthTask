@@ -19,8 +19,6 @@ import java.util.List;
 
 public class DomParser implements XmlParser {
     private static final Logger LOGGER = Logger.getLogger(DomParser.class);
-    private final List<Gem> gems;
-    private DocumentBuilder documentBuilder;
 
     private final String PRECIOUS = "precious";
     private final String SEMIPRECIOUS = "semiprecious";
@@ -29,16 +27,6 @@ public class DomParser implements XmlParser {
     private final String VALUE = "value";
     private final String TRANSPARENCY = "transparency";
     private final String EDGES = "edges";
-
-    public DomParser(){
-        this.gems = new ArrayList<>();
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        try {
-            documentBuilder = factory.newDocumentBuilder();
-        } catch (ParserConfigurationException e) {
-            LOGGER.error("error configure parser " + e.getMessage(), e);
-        }
-    }
 
     private static String getElementTextContent(Element element, String name) {
         NodeList nList = element.getElementsByTagName(name);
@@ -53,9 +41,10 @@ public class DomParser implements XmlParser {
         semiprecious.setId(gemElement.getAttribute("id"));
         String amount = gemElement.getAttribute("amount");
         if (amount.isEmpty()) {
-            amount = "0";
+            semiprecious.setAmount(0);
+        } else {
+            semiprecious.setAmount(Integer.parseInt(amount));
         }
-        semiprecious.setAmount(Integer.parseInt(amount));
 
         String name = getElementTextContent(gemElement, NAME);
         semiprecious.setName(name);
@@ -83,8 +72,12 @@ public class DomParser implements XmlParser {
 
     @Override
     public List<Gem> parse(String xmlFile) throws ParsingException {
-        Document doc = null;
+        List<Gem> gems = new ArrayList<>();
+
         try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+            Document doc = null;
             doc = documentBuilder.parse(xmlFile);
             Element root = doc.getDocumentElement();
 
@@ -101,7 +94,7 @@ public class DomParser implements XmlParser {
                 Semiprecious semiprecious = parseSemiprecious(semipreciousElement);
                 gems.add(semiprecious);
             }
-        } catch (SAXException | IOException e) {
+        } catch (SAXException | IOException | ParserConfigurationException e) {
             throw new ParsingException(e);
         }
         return gems;
