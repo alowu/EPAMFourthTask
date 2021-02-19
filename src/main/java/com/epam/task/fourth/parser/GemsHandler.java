@@ -5,7 +5,6 @@ import com.epam.task.fourth.entity.Precious;
 import com.epam.task.fourth.entity.Semiprecious;
 import org.apache.log4j.Logger;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
@@ -19,10 +18,6 @@ public class GemsHandler extends DefaultHandler {
     private Gem currentGem = null;
     private String tag = null;
 
-    public List<Gem> getGems() {
-        return gems;
-    }
-
     private final String PRECIOUS = "precious";
     private final String SEMIPRECIOUS = "semiprecious";
     private final String NAME = "name";
@@ -32,29 +27,25 @@ public class GemsHandler extends DefaultHandler {
     private final String EDGES = "edges";
     private final List<String> INFO_TAGS = Arrays.asList(NAME, COLOR, VALUE, TRANSPARENCY, EDGES);
 
+    public List<Gem> getGems() {
+        return gems;
+    }
+
     @Override
-    public void startDocument() throws SAXException {
+    public void startDocument(){
         LOGGER.info("Start SAX parsing");
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes){
         switch (localName) {
             case PRECIOUS:
                 currentGem = new Precious();
-                currentGem.setId(attributes.getValue("id"));
-                if (attributes.getLength() == 2) {
-                    String value = attributes.getValue("amount");
-                    currentGem.setAmount(Integer.parseInt(value));
-                }
+                setAttributes(attributes, currentGem);
                 break;
             case SEMIPRECIOUS:
                 currentGem = new Semiprecious();
-                currentGem.setId(attributes.getValue("id"));
-                if (attributes.getLength() == 2) {
-                    String value = attributes.getValue("amount");
-                    currentGem.setAmount(Integer.parseInt(value));
-                }
+                setAttributes(attributes, currentGem);
                 break;
         }
         if (INFO_TAGS.contains(localName)){
@@ -63,14 +54,14 @@ public class GemsHandler extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName){
         if (PRECIOUS.equals(localName) || SEMIPRECIOUS.equals(localName)) {
             gems.add(currentGem);
         }
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length){
         String text = new String(ch, start, length);
         if (tag != null) {
             switch (tag){
@@ -101,7 +92,17 @@ public class GemsHandler extends DefaultHandler {
     }
 
     @Override
-    public void endDocument() throws SAXException {
+    public void endDocument(){
         LOGGER.info("SAX parsing is complete");
+    }
+
+    private void setAttributes(Attributes attributes, Gem currentGem){
+        final String ID = "id";
+        final String AMOUNT = "amount";
+        currentGem.setId(attributes.getValue(ID));
+        if (attributes.getLength() == 2) {
+            String value = attributes.getValue(AMOUNT);
+            currentGem.setAmount(Integer.parseInt(value));
+        }
     }
 }
