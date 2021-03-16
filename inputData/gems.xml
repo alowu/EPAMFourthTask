@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.example.com/gems"
+      xsi:schemaLocation="http://www.example.com/gems gems.xsd">
+
+    <precious id="p01">
+        <name>diamond</name>
+        <color>white</color>
+        <value>150</value>
+        <transparency>80</transparency>
+        <edges>10</edges>
+    </precious>
+    <precious id="p02" amount="5">
+        <name>ruby</name>
+        <color>red</color>
+        <value>100</value>
+        <transparency>100</transparency>
+        <edges>15</edges>
+    </precious>
+    <semiprecious id="s01">
+        <name>apatite</name>
+        <color>blue</color>
+        <value>70</value>
+        <transparency>70</transparency>
+    </semiprecious>
+    <semiprecious id="s02" amount="10">
+        <name>prehnite</name>
+        <color>green</color>
+        <value>200</value>
+        <transparency>50</transparency>
+    </semiprecious>
+</gems>
+
